@@ -1,22 +1,17 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import solutions from './db.js';
 
 function App() {
   const [solution, setSolution] = useState('');
 
   useEffect(() => {
-    axios
-      .get('https://github.com/markuskusxyren/wordle/blob/main/data/db.json')
-      .then((response) => {
-        const solutions = response.data;
-        const randomIndex = Math.floor(Math.random() * solutions.length);
-        const randomSol = solutions[randomIndex].word;
-        setSolution(randomSol);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [setSolution]);
+    const getRandomSolution = () => {
+      const randomIndex = Math.floor(Math.random() * solutions.length);
+      return solutions[randomIndex].word;
+    };
+
+    setSolution(getRandomSolution);
+  }, []);
 
   return (
     <div className="App">
