@@ -6,9 +6,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get(
-        'https://my-json-server.typicode.com/your-username/your-repo/solutions'
-      )
+      .get('https://github.com/markuskusxyren/wordle/blob/main/data/db.json')
       .then((response) => {
         const solutions = response.data;
         const randomIndex = Math.floor(Math.random() * solutions.length);
