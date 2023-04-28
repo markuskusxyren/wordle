@@ -3,7 +3,7 @@ import { useState } from 'react';
 const useWordle = (solution) => {
   const [turn, setTurn] = useState(0);
   const [currentGuess, setCurrentGuess] = useState('');
-  const [guesses, setGuesses] = useState([]); // array of formatted guesses with the colored state
+  const [guesses, setGuesses] = useState([...Array(6)]); // array of formatted guesses with the colored state (only 6 guesses allowed)
   const [history, setHistory] = useState([]); // string of past guesses
   const [isCorrect, setIsCorrect] = useState(false);
 
@@ -37,11 +37,27 @@ const useWordle = (solution) => {
   // add a new guess to the guesses state
   // update the isCorrect state id the guess is correct
   // add one to the turn state
-  const addNewGuess = () => {};
+  const addNewGuess = (formattedGuess) => {
+    if (currentGuess === solution) {
+      setIsCorrect(true);
+    }
+    setGuesses((prevGuesses) => {
+      let newGuesses = [...prevGuesses];
+      newGuesses[turn] = formattedGuess;
+      return newGuesses;
+    });
+    setHistory((prevHistory) => {
+      return [...prevHistory, currentGuess];
+    });
+    setTurn((prevTurn) => {
+      return prevTurn + 1;
+    });
+    setCurrentGuess('');
+  };
 
   // handle keyup event & track the current guess
   // if user presses enter, add the guess to the guesses state
-  const handleKeyUp = ({ key }) => {
+  const handleKeyup = ({ key }) => {
     if (key === 'Enter') {
       // only add guess if turn is less than 5
       if (turn > 5) {
@@ -61,13 +77,11 @@ const useWordle = (solution) => {
 
       // if everything over is met then add the guess
       const formatted = formatGuess();
-      console.log(formatted);
+      addNewGuess(formatted);
     }
 
     if (key === 'Backspace') {
-      setCurrentGuess((prev) => {
-        return prev.slice(0, -1);
-      });
+      setCurrentGuess((prev) => prev.slice(0, -1));
       return;
     }
 
@@ -82,7 +96,7 @@ const useWordle = (solution) => {
     }
   };
 
-  return { turn, currentGuess, guesses, history, isCorrect, handleKeyUp };
+  return { turn, currentGuess, guesses, history, isCorrect, handleKeyup };
 };
 
 export default useWordle;
