@@ -52,7 +52,7 @@ game process:
     -- each letter is assigned a color based on it's inclusion in the solution
       -- exact matches (correct position in the solution) are green
       -- partial matches (in the solution but not the correct position) are yellow
-      -- none-matches (not in the solution at all) are grey
+      -- none-matches (not in the solution at all) are gray
     -- the guess is added the grid with the correct colors
     -- the current guess moves to the next row
     -- the keypad letters are updated (colors)
