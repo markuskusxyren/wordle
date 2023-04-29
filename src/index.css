@@ -193,9 +193,3 @@ h1 {
   }
 }
 
-@media (max-width: 1000000px) {
-  body {
-    transform: scale(1); /* Adjust the scale value as per your preference */
-    transform-origin: top;
-  }
-}
