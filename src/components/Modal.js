@@ -8,7 +8,7 @@ export default function Modal({ isCorrect, turn, solution }) {
       {isCorrect && (
         <div>
           <h1>You win!</h1>
-          <p className="solution">{solution}</p>
+          <p className="solution">The word is {solution}</p>
           <p>
             It took you {turn} {turnLabel}
           </p>
@@ -17,7 +17,7 @@ export default function Modal({ isCorrect, turn, solution }) {
       {!isCorrect && (
         <div>
           <h1>You lose!</h1>
-          <p className="solution">{solution}</p>
+          <p className="solution">The word is {solution}</p>
           <p>Try again</p>
         </div>
       )}

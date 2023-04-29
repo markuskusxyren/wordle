@@ -195,7 +195,7 @@ h1 {
 
 @media (max-width: 1000px) {
   body {
-    transform: scale(2.5); /* Adjust the scale value as per your preference */
+    transform: scale(1); /* Adjust the scale value as per your preference */
     transform-origin: top;
   }
 }
