@@ -57,34 +57,75 @@ h1 {
   animation-delay: 0.8s;
 }
 
+.keypad-container {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+
 .keypad {
-  max-width: 500px;
-  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
 }
-.keypad > div {
-  margin: 5px;
-  width: 40px;
-  height: 50px;
-  background: #eee;
-  display: inline-block;
-  border-radius: 6px;
-  line-height: 50px;
+
+.row {
+  display: flex;
+  justify-content: center;
 }
-.keypad > div.green {
-  background: #5ac85a;
+
+.key {
+  width: 30px;
+  height: 40px;
+  font-size: 1.2em;
+  border: 1px solid #bbb;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in;
+  margin: 4px;
+  border-radius: 8px;
+}
+
+.key.green {
+  background-color: #5ac85a;
   color: #fff;
-  transition: all 0.3s ease-in;
 }
-.keypad > div.yellow {
-  background: #e2cc68;
+
+.key.yellow {
+  background-color: #e2cc68;
   color: #fff;
-  transition: all 0.3s ease-in;
 }
-.keypad > div.gray {
-  background: #a1a1a1;
+
+.key.gray {
+  background-color: #a1a1a1;
   color: #fff;
-  transition: all 0.3s ease-in;
 }
+
+.key.enter {
+  margin: 4px;
+  width: 140px;
+}
+
+.row:last-child .key.enter {
+  margin-right: 0;
+}
+
+.key.backspace {
+  margin: 4px;
+  width: 140px;
+}
+
+.row > .key.backspace {
+  background-color: #ff004c;
+  color: #fff;
+}
+
 .modal {
   background: rgba(255,255,255,0.7);
   position: fixed;
@@ -149,5 +190,12 @@ h1 {
   100% {
     transform: scale(1);
     border-color: #333;
+  }
+}
+
+@media (max-width: 1000px) {
+  body {
+    transform: scale(2.5); /* Adjust the scale value as per your preference */
+    transform-origin: top;
   }
 }
