@@ -61,7 +61,6 @@ h1 {
   display: flex;
   justify-content: center;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 .keypad {
