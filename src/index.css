@@ -61,24 +61,30 @@ h1 {
   display: flex;
   justify-content: center;
   overflow-x: auto;
+  margin: 0 -10px; /* Add negative margins to account for the border */
 }
 
 .keypad {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
   max-width: 100%;
+  overflow-x: auto;
+  padding: 0 10px; /* Add some padding to the keypad */
+  width: calc(100% - 20px); /* Set the width to account for padding */
 }
 
 .row {
   display: flex;
   justify-content: center;
+  flex-basis: 100%;
+  margin-bottom: 10px;
 }
 
 .key {
   width: 30px;
   height: 40px;
-  font-size: 1.2em;
+  font-size: 1.3em;
   border: 1px solid #bbb;
   background-color: #eee;
   display: flex;
@@ -88,8 +94,8 @@ h1 {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease-in;
-  margin: 4px;
-  border-radius: 8px;
+  margin: 2px;
+  border-radius: 10px;
 }
 
 .key.green {
