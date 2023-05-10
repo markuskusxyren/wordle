@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import solutions from './db.js';
+import solutionsEng from './data/solutionsEng.js';
 import Wordle from './components/Wordle.js';
 
 function App() {
@@ -7,8 +7,8 @@ function App() {
 
   useEffect(() => {
     const getRandomSolution = () => {
-      const randomIndex = Math.floor(Math.random() * solutions.length);
-      return solutions[randomIndex].word;
+      const randomIndex = Math.floor(Math.random() * solutionsEng.length);
+      return solutionsEng[randomIndex].word;
     };
 
     setSolution(getRandomSolution);

@@ -8,33 +8,59 @@ export default function Wordle({ solution }) {
   const { currentGuess, guesses, turn, isCorrect, usedKeys, handleKeyup } =
     useWordle(solution);
   const [showModal, setShowModal] = useState(false);
+  const [showInstructions, setShowInstructions] = useState(true);
 
   useEffect(() => {
     window.addEventListener('keyup', handleKeyup);
-
-    if (isCorrect) {
-      setTimeout(() => setShowModal(true), 2000);
-      window.removeEventListener('keyup', handleKeyup);
-    }
-
-    if (turn > 5) {
-      setTimeout(() => setShowModal(true), 2000);
-      window.removeEventListener('keyup', handleKeyup);
-    }
-
     return () => window.removeEventListener('keyup', handleKeyup);
-  }, [handleKeyup, isCorrect, turn]);
+  }, [handleKeyup]);
 
   useEffect(() => {
-    console.log(guesses, turn, isCorrect);
-  }, [guesses, turn, isCorrect]);
+    if (isCorrect || turn > 5) {
+      setTimeout(() => {
+        setShowModal(true);
+      }, 2000); // 2000 ms (2 seconds) delay before showing the modal
+    }
+  }, [isCorrect, turn]);
+
+  const isGameOver = isCorrect || turn > 5;
 
   return (
     <div>
       <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} />
       <Keypad usedKeys={usedKeys} handleKeyup={handleKeyup} />
       {showModal && (
-        <Modal isCorrect={isCorrect} turn={turn} solution={solution} />
+        <Modal
+          isCorrect={isCorrect}
+          isGameOver={isGameOver}
+          turn={turn}
+          solution={solution}
+          onClose={() => setShowModal(false)}
+        />
+      )}
+      {showInstructions && (
+        <Modal onClose={() => setShowInstructions(false)}>
+          <h1>Welcome to Wordle!</h1>
+          <p>
+            The goal of the game is to guess a 5-letter word in 6 turns or less.
+            Each turn, you will enter a 5-letter guess and receive feedback on
+            how many letters your guess has in common with the solution. Use
+            this feedback to eliminate possible solutions and make your next
+            guess.
+          </p>
+          <p>
+            Green means ✅ placement and ✅ letter. <br />
+            Yellow means ❌ placement but ✅ letter. <br />
+            Gray means the letter is not in the word.
+          </p>
+          <p>Click the button below to start the game.</p>
+          <button
+            className="continue-btn"
+            onClick={() => setShowInstructions(false)}
+          >
+            PLAY
+          </button>
+        </Modal>
       )}
     </div>
   );

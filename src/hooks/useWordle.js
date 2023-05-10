@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import dictEng from '../data/dictEng';
 
 const useWordle = (solution) => {
   const [turn, setTurn] = useState(0);
@@ -93,12 +94,21 @@ const useWordle = (solution) => {
       }
       // no duplicate guesses
       if (history.includes(currentGuess)) {
-        console.log('duplicate guess');
+        alert('Duplicate guess, please try another word.');
+        setCurrentGuess('');
         return;
       }
       // guess should be 5 letters
       if (currentGuess.length !== 5) {
         console.log('guess should be 5 letters');
+        return;
+      }
+      // guess should be a word in dictEng.js
+      if (
+        !dictEng.some((wordObj) => wordObj.word === currentGuess.toLowerCase())
+      ) {
+        alert('Guess should be a word, please try again.');
+        setCurrentGuess('');
         return;
       }
 
