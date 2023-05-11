@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import dictEng from '../data/dictEng';
 
-const useWordle = (solution) => {
+const useWordle = (solution, dict, solutions) => {
   const [turn, setTurn] = useState(0);
   const [currentGuess, setCurrentGuess] = useState('');
   const [guesses, setGuesses] = useState([...Array(6)]); // array of formatted guesses with the colored state (only 6 guesses allowed)
@@ -9,7 +8,7 @@ const useWordle = (solution) => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [usedKeys, setUsedKeys] = useState({}); // keys that have been used during gameplay
 
-  // format a guess into an arrayu of letter objects
+  // format a guess into an array of letter objects
   // ex. [{key: 'a', color: 'green'}]
   const formatGuess = () => {
     let solutionArray = [...solution];
@@ -37,7 +36,7 @@ const useWordle = (solution) => {
   };
 
   // add a new guess to the guesses state
-  // update the isCorrect state id the guess is correct
+  // update the isCorrect state if the guess is correct
   // add one to the turn state
   const addNewGuess = (formattedGuess) => {
     if (currentGuess === solution) {
@@ -103,16 +102,16 @@ const useWordle = (solution) => {
         console.log('guess should be 5 letters');
         return;
       }
-      // guess should be a word in dictEng.js
+      // guess should be a word in the dictionary
       if (
-        !dictEng.some((wordObj) => wordObj.word === currentGuess.toLowerCase())
+        !dict.some((wordObj) => wordObj.word === currentGuess.toLowerCase())
       ) {
         alert('Guess should be a word, please try again.');
         setCurrentGuess('');
         return;
       }
 
-      // if everything over is met then add the guess
+      // if everything above is met then add the guess
       const formatted = formatGuess();
       addNewGuess(formatted);
     }

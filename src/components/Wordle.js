@@ -4,9 +4,18 @@ import Grid from './Grid';
 import Keypad from './Keypad';
 import Modal from './Modal';
 
+import dictEng from '../data/dictEng';
+import dictTag from '../data/dictTag';
+import solutionsEng from '../data/solutionsEng';
+import solutionsTag from '../data/solutionsTag';
+
 export default function Wordle({ solution }) {
+  const [currentDict, setCurrentDict] = useState('eng');
+  const dict = currentDict === 'eng' ? dictEng : dictTag;
+  const solutions = currentDict === 'eng' ? solutionsEng : solutionsTag;
+
   const { currentGuess, guesses, turn, isCorrect, usedKeys, handleKeyup } =
-    useWordle(solution);
+    useWordle(solution, dict, solutions);
   const [showModal, setShowModal] = useState(false);
   const [showInstructions, setShowInstructions] = useState(true);
 
@@ -39,7 +48,10 @@ export default function Wordle({ solution }) {
         />
       )}
       {showInstructions && (
-        <Modal onClose={() => setShowInstructions(false)}>
+        <Modal
+          className="modal modal-ins"
+          onClose={() => setShowInstructions(false)}
+        >
           <h1>Welcome to Wordle!</h1>
           <p>
             The goal of the game is to guess a 5-letter word in 6 turns or less.
@@ -53,6 +65,10 @@ export default function Wordle({ solution }) {
             Yellow means ❌ placement but ✅ letter. <br />
             Gray means the letter is not in the word.
           </p>
+          <div className="dict-buttons">
+            <button onClick={() => setCurrentDict('eng')}>English</button>
+            <button onClick={() => setCurrentDict('tag')}>Tagalog</button>
+          </div>
           <p>Click the button below to start the game.</p>
           <button
             className="continue-btn"

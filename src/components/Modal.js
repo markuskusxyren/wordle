@@ -19,7 +19,7 @@ export default function Modal({
       {isGameOver && (
         <>
           {isCorrect ? (
-            <div>
+            <div className="modal">
               <h1>You win!</h1>
               <p className="solution">The word is {solution}</p>
               <p>
@@ -30,7 +30,7 @@ export default function Modal({
               </button>
             </div>
           ) : (
-            <div>
+            <div className="modal">
               <h1>You lose!</h1>
               <p className="solution">The word is {solution}</p>
               <button className="try-again-btn" onClick={handleTryAgain}>
