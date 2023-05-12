@@ -15,13 +15,15 @@ export default function Modal({
   };
 
   return (
-    <div className="modal">
+    <div>
       {isGameOver && (
         <>
           {isCorrect ? (
-            <div>
+            <div className="win-modal">
               <h1>You win!</h1>
-              <p className="solution">The word is {solution}</p>
+              <p>
+                The word is <p className="solution">{solution}</p>
+              </p>
               <p>
                 It took you {turn} {turnLabel}
               </p>
@@ -30,9 +32,14 @@ export default function Modal({
               </button>
             </div>
           ) : (
-            <div>
+            <div className="lose-modal">
               <h1>You lose!</h1>
-              <p className="solution">The word is {solution}</p>
+              <p>
+                The word is <p className="solution">{solution}</p>
+              </p>
+              <p>
+                It took you {turn} {turnLabel}
+              </p>
               <button className="try-again-btn" onClick={handleTryAgain}>
                 Try again
               </button>

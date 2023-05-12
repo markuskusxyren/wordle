@@ -21,7 +21,6 @@ const dictTag = [
   { word: 'adobe' },
   { word: 'adobo' },
   { word: 'adres' },
-  { word: 'adult' },
   { word: 'Adyos' },
   { word: 'agaas' },
   { word: 'agata' },
