@@ -37,9 +37,6 @@ export default function Modal({
               <p>
                 The word is <p className="solution">{solution}</p>
               </p>
-              <p>
-                It took you {turn} {turnLabel}
-              </p>
               <button className="try-again-btn" onClick={handleTryAgain}>
                 Try again
               </button>
