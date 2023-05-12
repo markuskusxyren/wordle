@@ -6,7 +6,6 @@ export default function Modal({
   turn,
   solution,
   children,
-  onClose,
 }) {
   const turnLabel = turn === 1 ? 'turn' : 'turns';
 
