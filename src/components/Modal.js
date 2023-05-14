@@ -21,9 +21,6 @@ export default function Modal({
             <div className="win-modal">
               <h1>You win!</h1>
               <p>
-                The word is <p className="solution">{solution}</p>
-              </p>
-              <p>
                 It took you {turn} {turnLabel}
               </p>
               <button className="try-again-btn" onClick={handleTryAgain}>
