@@ -206,7 +206,7 @@ h1 {
 .instructions-modal {
   background: rgba(255, 255, 255, 0.9);
   position: fixed;
-  width: 80%;
+  width: 30%;
   max-width: 600px;
   height: auto;
   top: 50%;
@@ -292,7 +292,7 @@ h1 {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease-in;
-  margin: 30px auto;
+  margin: 10px auto;
   border-radius: 8px;
 }
 
@@ -314,7 +314,7 @@ h1 {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease-in;
-  margin: 30px auto;
+  margin: 10px auto;
   border-radius: 8px;
 }
 

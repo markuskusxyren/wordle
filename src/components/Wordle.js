@@ -83,7 +83,6 @@ export default function Wordle({ solution, currentDict, setCurrentDict }) {
                 </button>
               </div>
             </div>
-            <p>Click the button below to start the game.</p>
           </div>
           <button
             className="continue-btn"
