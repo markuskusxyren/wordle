@@ -2707,7 +2707,7 @@ const dictTag = [
   { word: 'pinal' },
   { word: 'pinga' },
   { word: 'pinid' },
-  { word: 'Pinoy' },
+  { word: 'pinoy' },
   { word: 'pinta' },
   { word: 'pinto' },
   { word: 'pinya' },
