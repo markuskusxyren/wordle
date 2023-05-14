@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 
 export default function Modal({
   isCorrect,
@@ -8,9 +8,22 @@ export default function Modal({
   children,
 }) {
   const turnLabel = turn === 1 ? 'turn' : 'turns';
+  const tryAgainButtonRef = useRef(null);
 
   const handleTryAgain = () => {
     window.location.reload(); // Refresh the app
+  };
+
+  useEffect(() => {
+    if (isGameOver) {
+      tryAgainButtonRef.current.focus();
+    }
+  }, [isGameOver]);
+
+  const handleKeyPress = (e) => {
+    if (isGameOver && e.key === 'Enter') {
+      handleTryAgain();
+    }
   };
 
   return (
@@ -23,7 +36,12 @@ export default function Modal({
               <p>
                 It took you {turn} {turnLabel}
               </p>
-              <button className="try-again-btn" onClick={handleTryAgain}>
+              <button
+                className="try-again-btn"
+                onClick={handleTryAgain}
+                onKeyDown={handleKeyPress}
+                ref={tryAgainButtonRef}
+              >
                 Try again
               </button>
             </div>
@@ -31,9 +49,14 @@ export default function Modal({
             <div className="lose-modal">
               <h1>You lose!</h1>
               <p>
-                The word is <p className="solution">{solution}</p>
+                The word is <span className="solution">{solution}</span>
               </p>
-              <button className="try-again-btn" onClick={handleTryAgain}>
+              <button
+                className="try-again-btn"
+                onClick={handleTryAgain}
+                onKeyDown={handleKeyPress}
+                ref={tryAgainButtonRef}
+              >
                 Try again
               </button>
             </div>

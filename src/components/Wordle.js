@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import useWordle from '../hooks/useWordle';
 import Grid from './Grid';
 import Keypad from './Keypad';
@@ -17,6 +17,7 @@ export default function Wordle({ solution, currentDict, setCurrentDict }) {
     useWordle(solution, dict, solutions);
   const [showModal, setShowModal] = useState(false);
   const [showInstructions, setShowInstructions] = useState(true);
+  const instructionsModalRef = useRef(null);
 
   useEffect(() => {
     window.addEventListener('keyup', handleKeyup);
@@ -30,6 +31,25 @@ export default function Wordle({ solution, currentDict, setCurrentDict }) {
       }, 2000); // 2000 ms (2 seconds) delay before showing the modal
     }
   }, [isCorrect, turn]);
+
+  useEffect(() => {
+    if (showInstructions) {
+      instructionsModalRef.current.focus();
+    }
+  }, [showInstructions]);
+
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (showInstructions && e.key === 'Enter') {
+        setShowInstructions(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyPress);
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [showInstructions]);
 
   const isGameOver = isCorrect || turn > 5;
 
@@ -87,6 +107,12 @@ export default function Wordle({ solution, currentDict, setCurrentDict }) {
           <button
             className="continue-btn"
             onClick={() => setShowInstructions(false)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                setShowInstructions(false);
+              }
+            }}
+            ref={instructionsModalRef}
           >
             PLAY
           </button>
