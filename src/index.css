@@ -206,7 +206,7 @@ h1 {
 .instructions-modal {
   background: rgba(255, 255, 255, 0.9);
   position: fixed;
-  width: 30%;
+  width: 60%;
   max-width: 600px;
   height: auto;
   top: 50%;
