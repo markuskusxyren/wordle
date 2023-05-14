@@ -8,17 +8,15 @@ const useWordle = (solution, dict, solutions) => {
   const [isCorrect, setIsCorrect] = useState(false);
   const [usedKeys, setUsedKeys] = useState({}); // keys that have been used during gameplay
 
-  // format a guess into an array of letter objects
-  // ex. [{key: 'a', color: 'green'}]
   const formatGuess = () => {
-    let solutionArray = [...solution];
+    let solutionArray = [...solution.toLowerCase()];
     let formattedGuess = [...currentGuess].map((l) => {
       return { key: l, color: 'gray' };
     });
 
     // find any exact matches (green)
     formattedGuess.forEach((l, i) => {
-      if (l.key === solutionArray[i]) {
+      if (l.key.toLowerCase() === solutionArray[i]) {
         formattedGuess[i].color = 'green';
         solutionArray[i] = null;
       }
@@ -26,9 +24,9 @@ const useWordle = (solution, dict, solutions) => {
 
     // find any partial matches (yellow)
     formattedGuess.forEach((l, i) => {
-      if (solutionArray.includes(l.key) && l.color !== 'green') {
+      if (solutionArray.includes(l.key.toLowerCase()) && l.color !== 'green') {
         formattedGuess[i].color = 'yellow';
-        solutionArray[solutionArray.indexOf(l.key)] = null;
+        solutionArray[solutionArray.indexOf(l.key.toLowerCase())] = null;
       }
     });
 
@@ -39,7 +37,8 @@ const useWordle = (solution, dict, solutions) => {
   // update the isCorrect state if the guess is correct
   // add one to the turn state
   const addNewGuess = (formattedGuess) => {
-    if (currentGuess === solution) {
+    // compare the solution
+    if (currentGuess.toLowerCase() === solution.toLowerCase()) {
       setIsCorrect(true);
     }
     setGuesses((prevGuesses) => {
@@ -104,7 +103,9 @@ const useWordle = (solution, dict, solutions) => {
       }
       // guess should be a word in the dictionary
       if (
-        !dict.some((wordObj) => wordObj.word === currentGuess.toLowerCase())
+        !dict.some(
+          (wordObj) => wordObj.word.toLowerCase() === currentGuess.toLowerCase()
+        )
       ) {
         alert('Guess should be a word, please try again.');
         setCurrentGuess('');
@@ -126,7 +127,7 @@ const useWordle = (solution, dict, solutions) => {
       if (currentGuess.length < 5) {
         // if current guess < 5 letters
         setCurrentGuess((prev) => {
-          return prev + key;
+          return prev + key.toLowerCase();
         });
       }
     }
