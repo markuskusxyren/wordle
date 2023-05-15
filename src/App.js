@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>HackHive Wordle App</h1>
+      <h1 className="top-name">HackHive Wordle App</h1>
       {solution && (
         <Wordle
           solution={solution}

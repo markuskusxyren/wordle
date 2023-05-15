@@ -92,7 +92,7 @@ export default function Wordle({ solution, currentDict, setCurrentDict }) {
             this feedback to eliminate possible solutions and make your next
             guess.
           </p>
-          <p>
+          <p className="instructions-color">
             Green means ✅ placement and ✅ letter. <br />
             Yellow means ❌ placement but ✅ letter. <br />
             Gray means the letter is not in the word.
