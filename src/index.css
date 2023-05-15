@@ -13,6 +13,16 @@ h1 {
   color: #333;
 }
 
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  transform: translateY(-80px); /* Adjust as needed */
+}
+
 /* rows */
 .row {
   text-align: center;
@@ -89,7 +99,7 @@ h1 {
   display: flex;
   justify-content: center;
   flex-basis: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
 }
 
 .key {
@@ -335,6 +345,15 @@ h1 {
 }
 
 @media (min-width: 401px) and (max-width: 600px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    transform: translateY(-80px); /* Adjust as needed */
+  }
   .keypad {
     /* Adjust styles for small screens */
     padding: 0 5px;
@@ -347,6 +366,15 @@ h1 {
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    transform: translateY(-80px); /* Adjust as needed */
+  }
   .keypad {
     /* Adjust styles for medium screens */
     padding: 0 10px;
@@ -359,6 +387,15 @@ h1 {
 }
 
 @media (min-width: 901px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    transform: translateY(-80px); /* Adjust as needed */
+  }
   .keypad {
     /* Adjust styles for larger screens */
     padding: 0 15px;
@@ -366,6 +403,9 @@ h1 {
   
   .key {
     /* Adjust the size of the keys for larger screens */
-    font-size: 22px;
+    width: 60px;
+  height: 60px;
+  font-size: 1.3em;
+    margin: 5px;
   }
 }

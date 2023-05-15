@@ -67,7 +67,7 @@ export default function Wordle({ solution, currentDict, setCurrentDict }) {
   const isGameOver = isCorrect || turn > 5;
 
   return (
-    <div>
+    <div className="main">
       <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} />
       <Keypad usedKeys={usedKeys} handleKeyup={handleKeyup} />
 
