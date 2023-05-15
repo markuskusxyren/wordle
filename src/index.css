@@ -129,23 +129,6 @@ h1 {
   width: 140px;
 }
 
-.try-again-btn {
-  width: 140px;
-  height: 60px;
-  font-size: 1.2em;
-  border: 1px solid #bbb;
-  background-color: #eee;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-transform: uppercase;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in;
-  margin: 30px;
-  border-radius: 8px;
-}
-
 .row:last-child .key.enter {
   margin-right: 0;
 }
@@ -336,4 +319,53 @@ h1 {
 .solution {
   font-weight: bold;
   text-transform: uppercase;
+}
+
+@media (max-width: 400px) {
+  .keypad {
+    /* Adjust styles for very small screens */
+    padding: 0 1px;
+  }
+  
+  .key {
+    /* Adjust the size of the keys for very small screens */
+    font-size: 10px;
+    margin: 1px;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 600px) {
+  .keypad {
+    /* Adjust styles for small screens */
+    padding: 0 5px;
+  }
+  
+  .key {
+    /* Adjust the size of the keys for small screens */
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .keypad {
+    /* Adjust styles for medium screens */
+    padding: 0 10px;
+  }
+  
+  .key {
+    /* Adjust the size of the keys for medium screens */
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 901px) {
+  .keypad {
+    /* Adjust styles for larger screens */
+    padding: 0 15px;
+  }
+  
+  .key {
+    /* Adjust the size of the keys for larger screens */
+    font-size: 22px;
+  }
 }
