@@ -395,7 +395,7 @@ h1 {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease-in;
-    margin: 100px auto;
+    margin: 10px auto;
     border-radius: 8px;
   }
 }
@@ -408,7 +408,7 @@ h1 {
     align-items: center;
     height: 100vh;
     text-align: center;
-    transform: translateY(-80px); /* Adjust as needed */
+    transform: translateY(-55px); /* Adjust as needed */
   }
   .keypad {
     /* Adjust styles for larger screens */
@@ -424,7 +424,7 @@ h1 {
   }
 }
 
-@media (max-height: 731px) {
+@media (max-height: 850px) {
   .top-name {
     display: none;
   }
