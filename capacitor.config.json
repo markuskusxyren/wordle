@@ -1,0 +1,8 @@
+{
+    "appId": "io.ionic.hackhive_wordle",
+    "appName": "hackhive_wordle",
+    "bundledWebRuntime": false,
+    "npmClient": "npm",
+    "webDir": "build",
+    "cordova": {}
+  }
