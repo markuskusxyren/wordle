@@ -1,0 +1,7 @@
+{
+  "name": "hackhive_wordle",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
